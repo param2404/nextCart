@@ -1,0 +1,1 @@
+{"ast":null,"code":"import Layout from './../components/Layout';\nex;","map":{"version":3,"sources":["/home/paramjeet/Desktop/nextcart/pages/index.js"],"names":["Layout","ex"],"mappings":"AAAA,OAAOA,MAAP,MAAmB,wBAAnB;AAEAC,EAAE","sourcesContent":["import Layout from './../components/Layout';\n\nex"]},"metadata":{},"sourceType":"module"}

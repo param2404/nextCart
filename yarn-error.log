@@ -1,0 +1,40 @@
+Arguments: 
+  /usr/bin/node /usr/bin/yarnpkg add --exact react react-dom next --cwd /home/paramjeet/Desktop/nextcart
+
+PATH: 
+  /home/paramjeet/.npm/_npx/2775/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  12.14.1
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/paramjeet/.cache/yarn/v6/npm-@babel-core-7.7.7-ee155d2e12300bcc0cff6a8ad46f2af5063803e9-integrity/node_modules/@babel/core/.yarn-metadata.json: Unexpected end of JSON input
+      at JSON.parse (<anonymous>)
+      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "nextcart",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
