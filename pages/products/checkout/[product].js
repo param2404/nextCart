@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import Layout from '../../../components/Layout';
 import { getAllIds, getProduct } from './../../../api/product'
+import { useAmp } from 'next/amp'
 
-export const config = { amp: true }
+//export const config = { amp: true }
+
+export const config = { amp: 'hybrid' }
 
 export default function Product({ products }) {
     const [name, setName] = useState('')
@@ -10,7 +13,9 @@ export default function Product({ products }) {
     const [mobile, setMobile] = useState('')
     const [address, setAddress] = useState('')
     const [couponCode, setCouponCode] = useState('')
-    const [loading,setLoading]=useState(false)
+    const [loading, setLoading] = useState(false)
+    
+    const isAmp = useAmp()
 
     const data = { name, email, mobile, address, couponCode }
 
@@ -47,7 +52,7 @@ export default function Product({ products }) {
             <div className="row">
                 <div className="col-6 p-5">
                     <div className="card m-2" style={{ width: '24rem' }}>
-                        <img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" />
+                        {isAmp ? <amp-img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" /> : <img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" />}  
                         <div className="card-body">
                             <h5 className="card-title">{products.title}</h5>
                             <h6 className="card-subtitle mb-2 text-muted">Price: ${products.price}</h6>
