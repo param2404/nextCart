@@ -3,7 +3,6 @@ import Layout from '../../../components/Layout';
 import { getAllIds, getProduct } from './../../../api/product'
 import { useAmp } from 'next/amp'
 
-//export const config = { amp: true }
 
 export const config = { amp: 'hybrid' }
 

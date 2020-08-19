@@ -4,13 +4,12 @@ import Link from 'next/link';
 import { getProducts, getAllCategoryId } from '../../api/products';
 import { useAmp } from 'next/amp'
 
-//export const config = { amp: true }
 
 export const config = { amp: 'hybrid' }
 
 export default function Post({ products }) {
     const isAmp = useAmp()
-    
+
     const productCards = useCallback(() => {
         if (products.length > 0) {
             return (

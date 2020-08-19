@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { getProducts} from '../../api/allproducts';
 import { useAmp } from 'next/amp'
 
-//export const config = { amp: true }
-
 export const config = { amp: 'hybrid' }
 
 export default function Post({ products }) {
