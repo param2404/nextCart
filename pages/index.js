@@ -9,16 +9,16 @@ export default function Home({categories}) {
 
 
     return (<Layout>
-        <div className="container">
-            <h3>Select Category to Search Products</h3>
-        <select className="form-control" onChange={(e)=>setCategorySelected(e.target.value)}>
+        <div className="container body">
+            <h3 className="title">Select Category to Search Products</h3>
+        <select className="form-control select" onChange={(e)=>setCategorySelected(e.target.value)}>
                 {categories.map((val,i) => (
                             <option key={i} value={val}>{val}</option>       
                 ))}
             </select>
-            
-            <Link href="/products/[category]" as={`/products/${categorySelected}`}><button className="mt-5">Get Products</button></Link>
-            <div className="row p-2"> <Link href="/products/allproducts" ><button className="mt-5">All Products</button></Link>
+            <div className="d-flex justify-content-between">
+            <Link href="/products/[category]" as={`/products/${categorySelected}`}><button className="mt-5 button">Get Products of Selected Category</button></Link>
+           <Link href="/products/allproducts" ><button className="mt-5 button">List of all Products</button></Link>
             </div>
         </div>
     </Layout>)

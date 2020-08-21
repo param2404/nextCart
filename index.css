@@ -1,0 +1,65 @@
+body{
+ background-color: bisque;
+}
+
+.body{
+    padding: 2rem;
+    background-color: rgb(213, 216, 240);
+}
+
+.button{
+    color: white;
+    background-color: #343a40!important;
+    border:none;
+    padding: 1rem;
+    font-family:"Proxinima"
+}
+
+.checkout{
+  background-color: bisque;
+  color:"#343a40";
+  border:none;
+    padding: 1rem;
+    font-family:"Proxinima"
+}
+
+.title{
+    font-family:"ProxinimaCondensed Bold";
+    font-style: normal;
+    font-weight: bold;
+    color: #343a40;
+    font-size: 34px;
+}
+
+.select{
+   background-color: bisque;
+   font-size: 14px; 
+   color: #343a40;
+}
+
+.card-text{
+    font-size: 14px; 
+     font-family:"Proxinima"
+}
+
+.card-subtitle{
+    font-size: 16px;
+}
+
+.card-title{
+    font-size: 20px;
+    color:  #343a40;
+     font-family:"ProxinimaBold"
+}
+
+.card-body{
+    background-color: bisque;
+    margin:0.3rem;
+}
+
+.card{
+    background-color: rgb(213, 216, 240);
+}
+
+
+

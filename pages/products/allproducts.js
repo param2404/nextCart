@@ -12,15 +12,12 @@ export default function Post({ products }) {
     const productCards = useCallback(() => {
         if (products.length > 0) {
             return (
-                <div className="row p-5 m-5">{products.map((product, i) => <div className="col-3 card m-2" key={i} style={{ width: '18rem' }}>
-                    {isAmp ? <amp-img className="card-img-top" src={product.image} alt="Card image cap" width="250px" height="250px" />: <img className="card-img-top" src={product.image} alt="Card image cap" width="250px" height="250px" />}  
-                    <div className="card-body">
-                        <h5 className="card-title">{product.title}</h5>
-                        <h6 className="card-subtitle mb-2 text-muted">Price: ${product.price}</h6>
-                        <p className="card-text">{product.description}</p>
-                        <Link href="/products/checkout/[product]" as={`/products/checkout/${product.id}`}><button>CHECKOUT</button></Link>
-                    </div>
-                </div>)}</div>)
+                <div className="row p-5 m-5"><ul className="list-group">{products.map((product, i) =>
+                    <li className="d-flex justify-content-between p-2 list-group-item"><div className="card-title">{product.title}</div>
+                    <Link href="/products/checkout/[product]" as={`/products/checkout/${product.id}`}><button className="button">CHECKOUT</button></Link>
+                    </li> )
+        }
+                </ul></div>)
         } else {
             return (<h3>No products</h3>)
         }
@@ -29,8 +26,10 @@ export default function Post({ products }) {
 
     return (
         <Layout>
-            <h1 className="pl-5">{`Products`}</h1>
-            {productCards()}
+            <div className="container">
+            <h1 className="title pl-5 pt-4 ml-5">All Products</h1>
+                {productCards()}
+            </div>
         </Layout>
     )
 }
