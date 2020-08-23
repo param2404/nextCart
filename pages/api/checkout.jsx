@@ -8,7 +8,7 @@ handler.use(middleware);
 handler.post(async (req, res) => {
     const {data} = req.body;
 
-    const dataModel = { "name": data.name, "email": data.email, "mobile": data.mobile, "address": data.address, "couponCode":data.couponCode  }
+    const dataModel = { "name": data.name, "email": data.email, "mobile": data.mobile, "address": data.address, "couponCode":data.couponCode,"productId":data.product  }
 
     
     if (Object.keys(data).length !== 0) {

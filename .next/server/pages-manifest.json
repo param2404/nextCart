@@ -1,9 +1,15 @@
 {
   "/_app": "pages/_app.js",
+  "/api/allproducts": "pages/api/allproducts.js",
+  "/api/checkout": "pages/api/checkout.js",
+  "/api/product": "pages/api/product.js",
+  "/api/products": "pages/api/products.js",
+  "/api/seedDB": "pages/api/seedDB.js",
+  "/": "pages/index.html",
+  "/products/[category]": "pages/products/[category].html",
+  "/products/allproducts": "pages/products/allproducts.html",
+  "/products/checkout/[product]": "pages/products/checkout/[product].html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/products/allproducts": "pages/products/allproducts.js",
-  "/products/checkout/[product]": "pages/products/checkout/[product].js",
-  "/products/[category]": "pages/products/[category].js"
+  "/404": "pages/404.html"
 }

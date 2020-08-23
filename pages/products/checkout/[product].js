@@ -1,22 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
-import { getAllIds, getProduct } from './../../../api/product'
-import { useAmp } from 'next/amp'
+//import { useAmp } from 'next/amp'
+import { useRouter } from 'next/router'
 
 
-export const config = { amp: 'hybrid' }
+// export const config = { amp: 'hybrid' }
 
-export default function Product({ products }) {
+export default function Product() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [mobile, setMobile] = useState('')
     const [address, setAddress] = useState('')
     const [couponCode, setCouponCode] = useState('')
     const [loading, setLoading] = useState(false)
+    const [products, setProducts] = useState({})
+    const router = useRouter()
+    // const isAmp = useAmp()
 
-    const isAmp = useAmp()
 
-    const data = { name, email, mobile, address, couponCode }
+    const { product } = router.query
+
+    const data = { name, email, mobile, address, couponCode, product: products._id }
+
+    const getProduct = async () => {
+        const response = await fetch('/api/product', {
+            method: "POST",
+            body: JSON.stringify({ product }),
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        if (response.status === 200) {
+            const result = await response.json()
+            setProducts(result)
+        }
+    }
+
+    useEffect(() => {
+        getProduct()
+    }, [])
 
 
     const onCheckout = async (e) => {
@@ -40,7 +62,6 @@ export default function Product({ products }) {
             alert("Please Enter Data");
         } else {
             alert("Something went wrong");
-            console.log(response);
         }
         setLoading(false)
     }
@@ -52,7 +73,7 @@ export default function Product({ products }) {
                 <div className="row">
                     <div className="col-md-6 col-sm-12 p-5">
                         <div className="card m-2" style={{ width: '24rem' }}>
-                            {isAmp ? <amp-img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" /> : <img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" />}
+                            <img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" />
                             <div className="card-body">
                                 <h5 className="card-title">{products.title}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Price: ${products.price}</h6>
@@ -60,9 +81,9 @@ export default function Product({ products }) {
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6 col-sm-12 p-5" style={{ backgroundColor:"#343a40"}}>
-                        <form>
-                            <div className="title" style={{color:"bisque"}}>CHECKOUT</div>
+                    <div className="col-md-6 col-sm-12 p-5" style={{ backgroundColor: "#343a40" }}>
+                        <form action="" target="">
+                            <div className="title" style={{ color: "bisque" }}>CHECKOUT</div>
                             <div className="form-group">
                                 <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
@@ -87,19 +108,4 @@ export default function Product({ products }) {
     )
 }
 
-export async function getStaticPaths() {
-    const paths = getAllIds()
-    return {
-        paths,
-        fallback: false
-    }
-}
 
-export async function getStaticProps({ params }) {
-    const productData = await getProduct(params.product)
-    return {
-        props: {
-            products: productData.product
-        }
-    }
-}

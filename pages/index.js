@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from './../components/Layout';
-import { fetchCategories} from './../api/categories'
 import Link from 'next/link';
 
 
-export default function Home({categories}) {
-    const [categorySelected,setCategorySelected]=useState('men clothing')
+export default function Home(props) {
+    const [categorySelected, setCategorySelected] = useState('men clothing')
+    const categories=['men clothing','electronics','jewelery','women clothing']
+    const seedDB = async() => {
+        const response = await fetch('/api/seedDB', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        })
+        if (response.status >= 200 && response.status < 300) {
+            alert("Products Added to DB");
+        } else if (response.status >= 400 && response.status < 500) {
+            //alert("Products already present in DB");
+        } else {
+            alert("Something went wrong");
+        }
+    }
+    
+    useEffect(() => {
+       seedDB() 
+    },[])
 
 
     return (<Layout>
@@ -24,10 +43,4 @@ export default function Home({categories}) {
     </Layout>)
 }
 
-export const getStaticProps =  () => {
-    const data = fetchCategories();
-    return {
-        props: data,
-    };
-}
 
