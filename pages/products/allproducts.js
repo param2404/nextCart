@@ -5,7 +5,8 @@ import Link from 'next/link';
 //export const config = { amp: 'hybrid' }
 
 export default function Post(props) {
-    const [products,setProducts]=useState([])
+    const [products, setProducts] = useState([])
+    const [loading,setLoading]=useState(true)
  
     const getAllProducts = async () => {
         const response = await fetch('/api/allproducts', {
@@ -16,6 +17,7 @@ export default function Post(props) {
         })
         const result = await response.json()
         setProducts(result)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -43,8 +45,8 @@ export default function Post(props) {
     return (
         <Layout>
             <div className="container">
-            <h1 className="title pl-5 pt-4 ml-5">All Products</h1>
-                {productCards()}
+                <h1 className="title pl-5 pt-4 ml-5">All Products</h1>
+                {loading ? <h3>Loading...Please Wait...</h3>:productCards()}
             </div>
         </Layout>
     )

@@ -11,8 +11,11 @@ body{
     color: white;
     background-color: #343a40!important;
     border:none;
-    padding: 0.5rem;
-    font-family:"Proxinima"
+    padding: 0.3rem;
+    font-family:"Proxinima";
+    @media only screen and (max-width: 600px) {
+    font-size:4px;
+}
 }
 
 .checkout{

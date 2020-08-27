@@ -38,8 +38,8 @@ export default function Product() {
     }
 
     useEffect(() => {
-        getProduct()
-    }, [])
+        product && getProduct()
+    }, [product])
 
 
     const onCheckout = async (e) => {
@@ -53,16 +53,16 @@ export default function Product() {
             },
         })
         if (response.status >= 200 && response.status < 300) {
-            toast("Product Ordered");
+            toast.success("Product Ordered");
             setAddress('')
             setName('')
             setMobile('')
             setEmail('')
             setCouponCode('')
         } else if (response.status >= 400 && response.status < 500) {
-            toast("Please Enter Data");
+            toast.info("Please Enter Data");
         } else {
-            toast("Something went wrong");
+            toast.error("Something went wrong");
         }
         setLoading(false)
     }
@@ -93,7 +93,7 @@ export default function Product() {
                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="form-group">
-                                <input type="phone" className="form-control" id="exampleInputPassword1" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                                <input type="number" className="form-control" id="exampleInputPassword1" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
                             </div>
                             <div className="form-group">
                                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} ></textarea>
