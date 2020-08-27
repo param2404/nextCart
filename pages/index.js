@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Layout from './../components/Layout';
+import React, { useEffect } from 'react';
 import AllProducts from './products/allproducts'
-import Link from 'next/link';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 export default function Home(props) {
@@ -13,11 +13,11 @@ export default function Home(props) {
             },
         })
         if (response.status >= 200 && response.status < 300) {
-            alert("Products Added to DB");
+            toast("Products Added in DB");
         } else if (response.status >= 400 && response.status < 500) {
-            //alert("Products already present in DB");
+            toast("Products already present in DB");
         } else {
-            alert("Something went wrong");
+            toast("Something went wrong");
         }
     }
     
@@ -26,7 +26,7 @@ export default function Home(props) {
     },[])
 
 
-    return  <AllProducts/>
+    return (<div><ToastContainer/><AllProducts /></div>)
 }
 
 

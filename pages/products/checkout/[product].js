@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
 //import { useAmp } from 'next/amp'
 import { useRouter } from 'next/router'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 // export const config = { amp: 'hybrid' }
@@ -52,16 +53,16 @@ export default function Product() {
             },
         })
         if (response.status >= 200 && response.status < 300) {
-            alert("Product Ordered");
+            toast("Product Ordered");
             setAddress('')
             setName('')
             setMobile('')
             setEmail('')
             setCouponCode('')
         } else if (response.status >= 400 && response.status < 500) {
-            alert("Please Enter Data");
+            toast("Please Enter Data");
         } else {
-            alert("Something went wrong");
+            toast("Something went wrong");
         }
         setLoading(false)
     }
@@ -69,11 +70,12 @@ export default function Product() {
 
     return (
         <Layout>
+            <ToastContainer/>
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-sm-12 p-5">
-                        <div className="card m-2" style={{ width: '24rem' }}>
-                            <img className="card-img-top" src={products.image} alt="Card image cap" width="250px" height="250px" />
+                        <div className="col-md-8 col-sm-8 card m-2">
+                            <img className="card-img-top" src={products.image} alt="Card image cap" width="200px" height="200px" />
                             <div className="card-body">
                                 <h5 className="card-title">{products.title}</h5>
                                 <h6 className="card-subtitle mb-2 text-muted">Price: ${products.price}</h6>

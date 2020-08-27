@@ -7,10 +7,16 @@ const client = new MongoClient('mongodb://127.0.0.1:27017', {
 });
 
 async function database(req, res, next) {
-    if (!client.isConnected()) await client.connect();
-    req.dbClient = client;
-    req.db = client.db('nextCart');
-    return next();
+    try {
+        if (!client.isConnected())
+            await client.connect();
+        req.dbClient = client;
+        req.db = client.db('nextCart');
+        return next();
+    } catch (e) {
+        return res.status(500).json('Error connecting DB')
+    }
+
 }
 
 const middleware = nextConnect();

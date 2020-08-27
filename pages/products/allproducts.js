@@ -31,7 +31,7 @@ export default function Post(props) {
                         <h5 className="card-title">{product.title}</h5>
                         <h6 className="card-subtitle mb-2 text-muted">Price: ${product.price}</h6>
                         <p className="card-text">{product.description}</p>
-                        <Link href="/products/checkout/[product]" as={`/products/checkout/${product.serialNumber}`}><button className="button">CHECKOUT</button></Link>
+                        <Link href="/products/checkout/[product]" as={`/products/checkout/${product.serialNumber}`}><button type="button" className="btn button">CHECKOUT</button></Link>
                     </div>
                 </div>)}</div>)
         } else {
