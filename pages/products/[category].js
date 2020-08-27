@@ -29,7 +29,6 @@ export default function Post(props) {
         getProducts()
     }, [])
 
-    console.log(props)
     const productCards = useCallback(() => {
         if (products.length > 0) {
             return (
