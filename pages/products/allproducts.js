@@ -52,7 +52,7 @@ export default function Post(props) {
    const productCards = useCallback(() => {
         if (products.length > 0) {
             return (
-                <div className="row pl-5 ml-5">{products && products.map((product, i) => <div className="col-md-3 col-xs-1 card m-2" key={i} style={{ width: '18rem' }}>
+                <div className="pt-4 row d-flex justify-content-center">{products && products.map((product, i) => <div className="col-md-3 col-xs-1 card m-2 shadow" key={i} style={{ width: '18rem' }}>
                     <img className="card-img-top p-2" src={product.image} alt="Card image cap" width="250px" height="250px" />
                     <div className="card-body">
                         <h5 className="card-title">{product.title}</h5>
@@ -70,16 +70,16 @@ export default function Post(props) {
     return (
         <Layout>
             <div className="container">
-                <div className="row">
-                    <div className="col-md-8">
-                        <select className="form-control select" onChange={(e) => setCategorySelected(e.target.value)}>
+                <div className="row d-flex justify-content-center">
+                    <div className="col-md-8 col-sm-6 col-xs-6 p-0">
+                        <select className="form-control select selection"  onChange={(e) => setCategorySelected(e.target.value)}>
                             {categories.map((val, i) => (
                                 <option key={i} value={val.value}>{val.title}</option>
                             ))}
                         </select>
                     </div>
-                    <div className="col-md-4">
-                        <button className="btn button" onClick={onCategorySelected}>GO</button>
+                    <div className="col-md-1 col-sm-4 col-xs-4 p-0">
+                        <button className="btn button" style={{height:'50px',width:'60px',fontSize:'25px'}} onClick={onCategorySelected}>GO</button>
                     </div>
                 </div>
                 {loading ? <h3>Loading...Please Wait...</h3>:productCards()}

@@ -2,9 +2,13 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/products/checkout/[product]": "pages/products/checkout/[product].js",
   "/": "pages/index.js",
-  "/api/orders": "pages/api/orders.js",
+  "/products/orders": "pages/products/orders.js",
+  "/api/allproducts": "pages/api/allproducts.js",
   "/api/seedDB": "pages/api/seedDB.js",
-  "/api/allproducts": "pages/api/allproducts.js"
+  "/api/orders": "pages/api/orders.js",
+  "/api/products": "pages/api/products.js",
+  "/products/checkout/[product]": "pages/products/checkout/[product].js",
+  "/api/product": "pages/api/product.js",
+  "/api/checkout": "pages/api/checkout.js"
 }

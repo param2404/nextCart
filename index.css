@@ -57,11 +57,16 @@ body{
 
 .card-body{
     background-color: #fffef4;
-    margin:0.3rem;
 }
 
 .card{
-    background-color: rgb(213, 216, 240);
+    background-color: #ffffff;
+}
+
+.selection{
+    height: 50px;
+    font-size: 30px;
+    
 }
 
 

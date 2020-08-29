@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
 //import { useAmp } from 'next/amp'
-import { useRouter } from 'next/router'
+import { useRouter} from 'next/router'
 import { ToastContainer, toast } from 'react-toastify';
 
 
@@ -54,11 +54,7 @@ export default function Product() {
         })
         if (response.status >= 200 && response.status < 300) {
             toast.success("Product Ordered");
-            setAddress('')
-            setName('')
-            setMobile('')
-            setEmail('')
-            setCouponCode('')
+            router.push('/products/orders')
         } else if (response.status >= 400 && response.status < 500) {
             toast.info("Please Enter Data");
         } else {
