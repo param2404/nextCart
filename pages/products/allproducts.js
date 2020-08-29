@@ -6,7 +6,14 @@ import Link from 'next/link';
 
 export default function Post(props) {
     const [products, setProducts] = useState([])
-    const [loading,setLoading]=useState(true)
+    const [loading, setLoading] = useState(true)
+    const [categorySelected, setCategorySelected] = useState('')
+
+    const categories = [{ value: 'all', title: "All" },
+        { value: 'men clothing', title: "Men's Clothing" },
+        { value: 'electronics', title: "Electronics" },
+        { value: 'jewelery', title: "Jewelery" },
+        { value: 'women clothing', title: "Women's Clothing" }]
  
     const getAllProducts = async () => {
         const response = await fetch('/api/allproducts', {
@@ -18,6 +25,24 @@ export default function Post(props) {
         const result = await response.json()
         setProducts(result)
         setLoading(false)
+    }
+
+    const onCategorySelected = async () => {
+        setLoading(true)
+        if (categorySelected === 'all') {
+            getAllProducts()
+        } else {           
+            const response = await fetch('/api/products', {
+                method: "POST",
+                body: JSON.stringify({ categorySelected }),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            })
+            const result = await response.json()
+            setProducts(result)
+            setLoading(false)
+        }
     }
 
     useEffect(() => {
@@ -45,7 +70,18 @@ export default function Post(props) {
     return (
         <Layout>
             <div className="container">
-                <h1 className="title pl-5 pt-4 ml-5">All Products</h1>
+                <div className="row">
+                    <div className="col-md-8">
+                        <select className="form-control select" onChange={(e) => setCategorySelected(e.target.value)}>
+                            {categories.map((val, i) => (
+                                <option key={i} value={val.value}>{val.title}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="col-md-4">
+                        <button className="btn button" onClick={onCategorySelected}>GO</button>
+                    </div>
+                </div>
                 {loading ? <h3>Loading...Please Wait...</h3>:productCards()}
             </div>
         </Layout>

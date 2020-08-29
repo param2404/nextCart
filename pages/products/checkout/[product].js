@@ -21,7 +21,7 @@ export default function Product() {
 
     const { product } = router.query
 
-    const data = { name, email, mobile, address, couponCode, product: products._id }
+    const data = { name, email, mobile, address, couponCode, product: products._id, productName: products.title, productPrice: products.price, productImage: products.image }
 
     const getProduct = async () => {
         const response = await fetch('/api/product', {
@@ -70,7 +70,7 @@ export default function Product() {
 
     return (
         <Layout>
-            <ToastContainer/>
+            <ToastContainer />
             <div className="container">
                 <div className="row">
                     <div className="col-md-6 col-sm-12 p-5">
@@ -85,7 +85,7 @@ export default function Product() {
                     </div>
                     <div className="col-md-6 col-sm-12 p-5" style={{ backgroundColor: "#343a40" }}>
                         <form action="" target="">
-                            <div className="title" style={{ color: "bisque" }}>CHECKOUT</div>
+                            <div className="title" style={{ color: "#fffef4" }}>CHECKOUT</div>
                             <div className="form-group">
                                 <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
                             </div>
@@ -96,12 +96,12 @@ export default function Product() {
                                 <input type="number" className="form-control" id="exampleInputPassword1" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
                             </div>
                             <div className="form-group">
-                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} ></textarea>
+                                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Shipping Address" value={address} onChange={(e) => setAddress(e.target.value)} ></textarea>
                             </div>
                             <div className="form-group">
                                 <input type="text" className="form-control" id="exampleInputPassword1" placeholder="Coupon Code" value={couponCode} onChange={(e) => setCouponCode(e.target.value)} />
                             </div>
-                            <button type="submit" className="btn checkout" disabled={loading || name === '' || mobile === '' ? true : false} onClick={(e) => onCheckout(e)}>Submit</button>
+                            <button type="submit" className="btn checkout" disabled={loading || name === '' || mobile === '' || address === '' ? true : false} onClick={(e) => onCheckout(e)}>Submit</button>
                         </form>
                     </div>
                 </div>

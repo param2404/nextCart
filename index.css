@@ -1,5 +1,5 @@
 body{
- background-color: bisque;
+ background-color: #fffef4;
 }
 
 .body{
@@ -11,7 +11,7 @@ body{
     color: white;
     background-color: #343a40!important;
     border:none;
-    padding: 0.3rem;
+    padding: 0.5rem;
     font-family:"Proxinima";
     @media only screen and (max-width: 600px) {
     font-size:4px;
@@ -19,7 +19,7 @@ body{
 }
 
 .checkout{
-  background-color: bisque;
+  background-color: #fffef4;
   color:"#343a40";
   border:none;
     padding: 1rem;
@@ -35,7 +35,7 @@ body{
 }
 
 .select{
-   background-color: bisque;
+   background-color: #fffef4;
    font-size: 14px; 
    color: #343a40;
 }
@@ -56,7 +56,7 @@ body{
 }
 
 .card-body{
-    background-color: bisque;
+    background-color: #fffef4;
     margin:0.3rem;
 }
 

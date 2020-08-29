@@ -15,7 +15,7 @@ export default function Home(props) {
         if (response.status >= 200 && response.status < 300) {
             toast.success("Products Added in DB");
         } else if (response.status >= 400 && response.status < 500) {
-            toast.info("Products already present in DB");
+           // toast.info("Products already present in DB");
         } else {
             toast.error("Something went wrong");
         }

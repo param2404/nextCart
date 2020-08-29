@@ -2,6 +2,9 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/products/checkout/[product]": "pages/products/checkout/[product].js",
   "/": "pages/index.js",
-  "/products/checkout/[product]": "pages/products/checkout/[product].js"
+  "/api/orders": "pages/api/orders.js",
+  "/api/seedDB": "pages/api/seedDB.js",
+  "/api/allproducts": "pages/api/allproducts.js"
 }
