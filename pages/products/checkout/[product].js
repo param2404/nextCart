@@ -89,7 +89,14 @@ export default function Product() {
                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="form-group">
-                                <input type="number" className="form-control" id="exampleInputPassword1" placeholder="Mobile" value={mobile} onChange={(e) => setMobile(e.target.value)} />
+                                <input type='tel' className="form-control" id="exampleInputPassword1" placeholder="Mobile" value={mobile} onChange={(e) => {
+                                    setMobile(
+                                        e.target.value
+                                            .replace(/[^0-9]/g, '')
+                                            .toString()
+                                            .slice(0, 10),
+                                    )
+                                }}/>
                             </div>
                             <div className="form-group">
                                 <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Shipping Address" value={address} onChange={(e) => setAddress(e.target.value)} ></textarea>
